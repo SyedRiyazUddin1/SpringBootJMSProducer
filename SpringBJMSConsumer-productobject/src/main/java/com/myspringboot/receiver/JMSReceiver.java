@@ -5,22 +5,28 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
 
 import com.myspringboot.model.Product;
 
+//Whenever queue get the message, this class will automatically gets called by ListenerContainer and the message will be received
 @Component
 public class JMSReceiver implements ChannelAwareMessageListener {
 
+	// using logger slf4j
+	private static final Logger log = LoggerFactory.getLogger(JMSReceiver.class);
+
 	@Override
 	public void onMessage(Message message, com.rabbitmq.client.Channel channel) throws Exception {
-		System.out.println("Received <" + message + ">");
+		log.info("Received <" + message + ">");
 
 		byte[] byteArray = message.getBody();
 		Product product = (Product) getObject(byteArray);
-		System.out.println("product = " + product);
+		log.info("product = " + product);
 
 		/**
 		 * Suppose say here we are storing product details in the table and some
