@@ -32,15 +32,18 @@ public class RabbitMQConfiguration {
 		// Binding the queue and topic exchange for a given queue name
 
 	}
+	
+	
+	//moved this to properties file
 
 	// creates ConnectionFactory object based on the below given configuration
-	@Bean
-	public ConnectionFactory connectionFactory() {
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost");
-		connectionFactory.setPort(5672);
-		connectionFactory.setUsername("guest");
-		connectionFactory.setPassword("guest");
-		return connectionFactory;
-	}
+//	@Bean
+//	public ConnectionFactory connectionFactory() {
+//		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost");
+//		connectionFactory.setPort(5672);
+//		connectionFactory.setUsername("guest");
+//		connectionFactory.setPassword("guest");
+//		return connectionFactory;
+//	}
 
 }
