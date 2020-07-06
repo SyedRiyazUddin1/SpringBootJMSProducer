@@ -14,12 +14,14 @@ import org.springframework.stereotype.Component;
 
 import com.myspringboot.receiver.JMSReceiver;
 
+
+
 @Component
 public class RabbitMQConfiguration {
 
 	public static final String topicExchangeName = "message_queue_exchange";
 
-	public static final String queueName = "message_queue";
+	public static final String queueName = "message_queues";
 
 	@Bean
 	Queue queue() {
